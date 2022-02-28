@@ -4,7 +4,7 @@ import Home from './Components/Home/Home'
 import Dogs from './Components/Dogs/Dogs';
 import Cart from './Components/Cart/Cart';
 import NavBar from './NavBar/NavBar'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CartContext } from './Contexts/CartContext'
 
 function App() {
