@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import Home from './Components/Home/Home'
+import Dogs from './Components/Dogs/Dogs';
+import Cart from './Components/Cart/Cart';
+import NavBar from './NavBar/NavBar'
+import { useEffect, useState } from 'react';
+import { CartContext } from './Contexts/CartContext'
 
 function App() {
+
+  const [myCart, addToCart] = useState([{}])
+  const [total, setTotal] = useState(0)
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartContext.Provider value={{myCart, addToCart, total, setTotal}}>
+      <NavBar/>
+      <div className="page-container">
+
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/dogs" element={<Dogs />}/>
+          <Route path="/cart" element={<Cart />}/>
+        </Routes>
+      </div>
+    </CartContext.Provider>
   );
 }
 
